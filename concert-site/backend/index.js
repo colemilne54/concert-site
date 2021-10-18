@@ -1,6 +1,7 @@
 import app from "./server.js"
 import mongodb from "mongodb"
 import dotenv from "dotenv"
+// 32:40, still need to figure out the reviews portion
 dotenv.config()
 const MongoClient = mongodb.MongoClient
 
