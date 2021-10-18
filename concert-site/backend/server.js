@@ -1,16 +1,13 @@
-const express = require('express');
-// const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
+import express from "express"
+import cors from "cors"
+import concerts from "./api/concerts.route.js"
 
-require('dotenv').config();
+const app = express()
 
-const app = express();
-const port = process.env.PORT || 5000;
+app.use(cors())
+app.use(express.json())
 
-app.use(cors());
-app.use(express.json());
+app.use("/api/v1/concerts", concerts)
+app.use("*", (req, res) => res.status(404).json({error: "not found"}))
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`)
-})
+export default app
