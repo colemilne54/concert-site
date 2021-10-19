@@ -1,7 +1,7 @@
 import app from "./server.js"
 import mongodb from "mongodb"
 import dotenv from "dotenv"
-// 32:40, still need to figure out the reviews portion
+import ConcertsDAO from "./dao/concertsDAO.js"
 dotenv.config()
 const MongoClient = mongodb.MongoClient
 
@@ -19,6 +19,7 @@ MongoClient.connect(
         process.exit(1)
     })
     .then(async client => {
+        await ConcertsDAO.injectDB(client)
         app.listen(port, () => {
             console.log(`Server running on http://localhost:${port}`)
         })

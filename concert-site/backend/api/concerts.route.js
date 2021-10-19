@@ -1,7 +1,8 @@
 import express from "express"
+import ConcertsController from "./concerts.controller.js"
 
 const router = express.Router()
 
-router.route("/").get((req, res) => res.send("hello world"))
+router.route("/").get(ConcertsController.apiGetConcerts)
 
 export default router
