@@ -56,49 +56,49 @@ export default class ConcertsDAO {
       return { concertsList: [], totalNumConcerts: 0 }
     }
   }
-  static async getConcertByID(id) {
-    try {
-      const pipeline = [
-        {
-            $match: {
-                _id: new ObjectId(id),
-            },
-        },
-              {
-                  $lookup: {
-                      from: "reviews",
-                      let: {
-                          id: "$_id",
-                      },
-                      pipeline: [
-                          {
-                              $match: {
-                                  $expr: {
-                                      $eq: ["$concert_id", "$$id"],
-                                  },
-                              },
-                          },
-                          {
-                              $sort: {
-                                  date: -1,
-                              },
-                          },
-                      ],
-                      as: "reviews",
-                  },
-              },
-              {
-                  $addFields: {
-                      reviews: "$reviews",
-                  },
-              },
-          ]
-      return await concerts.aggregate(pipeline).next()
-    } catch (e) {
-      console.error(`Something went wrong in getConcertByID: ${e}`)
-      throw e
-    }
-  }
+//   static async getConcertByID(id) {
+//     try {
+//       const pipeline = [
+//         {
+//             $match: {
+//                 _id: new ObjectId(id),
+//             },
+//         },
+//               {
+//                   $lookup: {
+//                       from: "reviews",
+//                       let: {
+//                           id: "$_id",
+//                       },
+//                       pipeline: [
+//                           {
+//                               $match: {
+//                                   $expr: {
+//                                       $eq: ["$concert_id", "$$id"],
+//                                   },
+//                               },
+//                           },
+//                           {
+//                               $sort: {
+//                                   date: -1,
+//                               },
+//                           },
+//                       ],
+//                       as: "reviews",
+//                   },
+//               },
+//               {
+//                   $addFields: {
+//                       reviews: "$reviews",
+//                   },
+//               },
+//           ]
+//       return await concerts.aggregate(pipeline).next()
+//     } catch (e) {
+//       console.error(`Something went wrong in getConcertByID: ${e}`)
+//       throw e
+//     }
+//   }
 
   static async getGenres() {
     let genres = []
