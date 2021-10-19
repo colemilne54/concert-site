@@ -10,8 +10,8 @@ export default class ConcertsController {
       filters.genre = req.query.genre
     } else if (req.query.zipcode) {
       filters.zipcode = req.query.zipcode
-    } else if (req.query.band) {
-      filters.band = req.query.band
+    } else if (req.query.bands) {
+      filters.bands = req.query.bands
     }
 
     const { concertsList, totalNumConcerts } = await ConcertsDAO.getConcerts({

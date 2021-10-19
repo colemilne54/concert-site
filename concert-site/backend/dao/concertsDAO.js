@@ -23,8 +23,8 @@ export default class ConcertsDAO {
   } = {}) {
     let query
     if (filters) {
-      if ("band" in filters) {
-        query = { $text: { $search: filters["band"] } }
+      if ("bands" in filters) {
+        query = { $text: { $search: filters["bands"] } }
       } else if ("genre" in filters) {
         query = { "genre": { $eq: filters["genre"] } }
       } else if ("zipcode" in filters) {
