@@ -1,5 +1,5 @@
-// import mongodb from "mongodb"
-// const ObjectId = mongodb.ObjectID
+import mongodb from "mongodb"
+const ObjectId = mongodb.ObjectID
 let concerts
 
 export default class ConcertsDAO {
@@ -28,7 +28,7 @@ export default class ConcertsDAO {
       } else if ("genre" in filters) {
         query = { "genre": { $eq: filters["genre"] } }
       } else if ("zipcode" in filters) {
-        query = { "concert.zipcode": { $eq: filters["zipcode"] } }
+        query = { "address.zipcode": { $eq: filters["zipcode"] } }
       }
     }
 
@@ -100,14 +100,14 @@ export default class ConcertsDAO {
 //     }
 //   }
 
-  static async getGenres() {
-    let genres = []
-    try {
-      genres = await concerts.distinct("genre")
-      return genres
-    } catch (e) {
-      console.error(`Unable to get genres, ${e}`)
-      return genres
-    }
-  }
+//   static async getGenres() {
+//     let genres = []
+//     try {
+//       genres = await concerts.distinct("genre")
+//       return genres
+//     } catch (e) {
+//       console.error(`Unable to get genres, ${e}`)
+//       return genres
+//     }
+//   }
 }
