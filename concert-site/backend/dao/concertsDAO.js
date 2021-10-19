@@ -3,111 +3,167 @@ const ObjectId = mongodb.ObjectID
 let concerts
 
 export default class ConcertsDAO {
-  static async injectDB(conn) {
-    if (concerts) {
-      return
-    }
-    try {
-      concerts = await conn.db(process.env.CONCERTS_NS).collection("concerts")
-    } catch (e) {
-      console.error(
-        `Unable to establish a collection handle in concertsDAO: ${e}`,
-      )
-    }
-  }
-
-  static async getConcerts({
-    filters = null,
-    page = 0,
-    concertsPerPage = 20,
-  } = {}) {
-    let query
-    if (filters) {
-      if ("bands" in filters) {
-        query = { $text: { $search: filters["bands"] } }
-      } else if ("genre" in filters) {
-        query = { "genre": { $eq: filters["genre"] } }
-      } else if ("zipcode" in filters) {
-        query = { "address.zipcode": { $eq: filters["zipcode"] } }
-      }
+    static async injectDB(conn) {
+        if (concerts) {
+            return
+        }
+        try {
+            concerts = await conn.db(process.env.CONCERTS_NS).collection("concerts")
+        } catch (e) {
+            console.error(
+                `Unable to establish a collection handle in concertsDAO: ${e}`,
+            )
+        }
     }
 
-    let cursor
-    
-    try {
-      cursor = await concerts
-        .find(query)
-    } catch (e) {
-      console.error(`Unable to issue find command, ${e}`)
-      return { concertsList: [], totalNumConcerts: 0 }
+    static async getConcerts({
+        filters = null,
+        page = 0,
+        concertsPerPage = 20,
+    } = {}) {
+        let query
+        if (filters) {
+            if ("bands" in filters) {
+                query = { $text: { $search: filters["bands"] } }
+            } else if ("genre" in filters) {
+                query = { "genre": { $eq: filters["genre"] } }
+            } else if ("zipcode" in filters) {
+                query = { "address.zipcode": { $eq: filters["zipcode"] } }
+            }
+        }
+
+        let cursor
+
+        try {
+            cursor = await concerts
+                .find(query)
+        } catch (e) {
+            console.error(`Unable to issue find command, ${e}`)
+            return { concertsList: [], totalNumConcerts: 0 }
+        }
+
+        const displayCursor = cursor.limit(concertsPerPage).skip(concertsPerPage * page)
+
+        try {
+            const concertsList = await displayCursor.toArray()
+            const totalNumConcerts = await concerts.countDocuments(query)
+
+            return { concertsList, totalNumConcerts }
+        } catch (e) {
+            console.error(
+                `Unable to convert cursor to array or problem counting documents, ${e}`,
+            )
+            return { concertsList: [], totalNumConcerts: 0 }
+        }
     }
 
-    const displayCursor = cursor.limit(concertsPerPage).skip(concertsPerPage * page)
+    // TODO: generate concert id
+    static async addConcert(venueName, bands, user) {
+        try {
+            const concertDoc = {
+                user_name: user.userName,
+                user_id: user.userId,
+                bands: bands,
+                venue_name: venueName,
+                // concert_id: ObjectId(concertId),
+            }
 
-    try {
-      const concertsList = await displayCursor.toArray()
-      const totalNumConcerts = await concerts.countDocuments(query)
-
-      return { concertsList, totalNumConcerts }
-    } catch (e) {
-      console.error(
-        `Unable to convert cursor to array or problem counting documents, ${e}`,
-      )
-      return { concertsList: [], totalNumConcerts: 0 }
+            return await concerts.insertOne(concertDoc)
+        } catch (e) {
+            console.error(`Unable to post concert: ${e}`)
+            return { error: e }
+        }
     }
-  }
-//   static async getConcertByID(id) {
-//     try {
-//       const pipeline = [
-//         {
-//             $match: {
-//                 _id: new ObjectId(id),
-//             },
-//         },
-//               {
-//                   $lookup: {
-//                       from: "reviews",
-//                       let: {
-//                           id: "$_id",
-//                       },
-//                       pipeline: [
-//                           {
-//                               $match: {
-//                                   $expr: {
-//                                       $eq: ["$concert_id", "$$id"],
-//                                   },
-//                               },
-//                           },
-//                           {
-//                               $sort: {
-//                                   date: -1,
-//                               },
-//                           },
-//                       ],
-//                       as: "reviews",
-//                   },
-//               },
-//               {
-//                   $addFields: {
-//                       reviews: "$reviews",
-//                   },
-//               },
-//           ]
-//       return await concerts.aggregate(pipeline).next()
-//     } catch (e) {
-//       console.error(`Something went wrong in getConcertByID: ${e}`)
-//       throw e
-//     }
-//   }
 
-//   static async getGenres() {
-//     let genres = []
-//     try {
-//       genres = await concerts.distinct("genre")
-//       return genres
-//     } catch (e) {
-//       console.error(`Unable to get genres, ${e}`)
-//       return genres
-//     }
-//   }
+    static async updateConcert(concertId, userId, bands) {
+        try {
+            const updateResponse = await concerts.updateOne(
+                { user_id: userId, concert_id: ObjectId(concertId) },
+                { $set: { bands: bands }},
+            )
+
+            return updateResponse
+        } catch (e) {
+            console.error(`Unable to post concert: ${e}`)
+            return { error: e }
+        }
+    }
+
+    static async deleteConcert(concertId, userId, bands) {
+        try {
+            const deleteResponse = await concerts.deleteOne({
+                concert_id: ObjectId(concertId),
+                user_id: userId,
+            })
+
+            return deleteResponse
+        } catch (e) {
+            console.error(`Unable to delete concert: ${e}`)
+            return { error: e }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    //   static async getConcertByID(id) {
+    //     try {
+    //       const pipeline = [
+    //         {
+    //             $match: {
+    //                 _id: new ObjectId(id),
+    //             },
+    //         },
+    //               {
+    //                   $lookup: {
+    //                       from: "reviews",
+    //                       let: {
+    //                           id: "$_id",
+    //                       },
+    //                       pipeline: [
+    //                           {
+    //                               $match: {
+    //                                   $expr: {
+    //                                       $eq: ["$concert_id", "$$id"],
+    //                                   },
+    //                               },
+    //                           },
+    //                           {
+    //                               $sort: {
+    //                                   date: -1,
+    //                               },
+    //                           },
+    //                       ],
+    //                       as: "reviews",
+    //                   },
+    //               },
+    //               {
+    //                   $addFields: {
+    //                       reviews: "$reviews",
+    //                   },
+    //               },
+    //           ]
+    //       return await concerts.aggregate(pipeline).next()
+    //     } catch (e) {
+    //       console.error(`Something went wrong in getConcertByID: ${e}`)
+    //       throw e
+    //     }
+    //   }
+
+    //   static async getGenres() {
+    //     let genres = []
+    //     try {
+    //       genres = await concerts.distinct("genre")
+    //       return genres
+    //     } catch (e) {
+    //       console.error(`Unable to get genres, ${e}`)
+    //       return genres
+    //     }
+    //   }
 }
