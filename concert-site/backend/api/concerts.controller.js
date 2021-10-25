@@ -57,9 +57,11 @@ export default class ConcertsController {
         try {
             // const venueName = req.body.venue_name
             const bands = req.body.bands
+            const concertId = req.body._id
 
             const ConcertResponse = await ConcertsDAO.updateConcert(
                 // venueName,
+                concertId,
                 req.body.user_id,
                 bands
             )

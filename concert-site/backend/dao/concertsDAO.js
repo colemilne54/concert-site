@@ -78,7 +78,7 @@ export default class ConcertsDAO {
     static async updateConcert(concertId, userId, bands) {
         try {
             const updateResponse = await concerts.updateOne(
-                { user_id: userId, concert_id: ObjectId(concertId) },
+                { user_id: userId, _id: ObjectId(concertId) },
                 { $set: { bands: bands }},
             )
 
@@ -92,7 +92,7 @@ export default class ConcertsDAO {
     static async deleteConcert(concertId, userId, bands) {
         try {
             const deleteResponse = await concerts.deleteOne({
-                concert_id: ObjectId(concertId),
+                _id: ObjectId(concertId),
                 user_id: userId,
             })
 

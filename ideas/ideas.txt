@@ -1,3 +1,7 @@
 add date to json
 
 pre fill in addy for venue account type
+
+
+null so try to get req body to print out. if thats not null its internal connection issue
+if it is null, its how its trying to grab from server
