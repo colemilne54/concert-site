@@ -5,7 +5,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddConcert from "./components/add-concert";
-import Concerts from "./components/concerts";
+import Concert from "./components/concert";
 import ConcertsList from "./components/concerts-list";
 import Login from "./components/login";
 
@@ -51,17 +51,17 @@ function App() {
 
 			<div className="container mt-3">
 				<Switch>
-					<Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
+					<Route exact path={["/"]} component={ConcertsList} />
 					<Route
-						path="/restaurants/:id/review"
+						path="/concerts"
 						render={(props) => (
-							<AddReview {...props} user={user} />
+							<AddConcert {...props} user={user} />
 						)}
 					/>
 					<Route
-						path="/restaurants/:id"
+						path="/concerts/:id"
 						render={(props) => (
-							<Restaurant {...props} user={user} />
+							<Concert {...props} user={user} />
 						)}
 					/>
 					<Route

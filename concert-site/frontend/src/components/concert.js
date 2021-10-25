@@ -3,7 +3,7 @@
 import React from "react";
 
 
-function Concerts() {
+function Concert() {
   return (
     <div className="App">
       Hello, World
@@ -11,4 +11,4 @@ function Concerts() {
   );
 }
 
-export default Concerts;
+export default Concert;
