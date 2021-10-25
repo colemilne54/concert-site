@@ -77,7 +77,7 @@ export default class ConcertsController {
                 )
             }
 
-
+            res.json({ status: "success" })
         } catch (e) {
             res.status(500).json({ error: e.message })
         }
@@ -85,9 +85,11 @@ export default class ConcertsController {
 
     static async apiDeleteConcert(req, res, next) {
         try {
+            const concertId = req.query.id
             const userId = req.body.user_id
 
             const ConcertResponse = await ConcertsDAO.deleteConcert(
+                concertId,
                 userId
             )
             res.json({ status: "success" })
@@ -97,7 +99,15 @@ export default class ConcertsController {
     }
 
 
-
+    static async apiGetConcertGenres(req, res, next) {
+        try {
+          let genres = await ConcertsDAO.getGenres()
+          res.json(genres)
+        } catch (e) {
+          console.log(`api, ${e}`)
+          res.status(500).json({ error: e })
+        }
+      }
 
 
 
@@ -110,16 +120,6 @@ export default class ConcertsController {
     //         return
     //       }
     //       res.json(concert)
-    //     } catch (e) {
-    //       console.log(`api, ${e}`)
-    //       res.status(500).json({ error: e })
-    //     }
-    //   }
-
-    //   static async apiGetConcertGenres(req, res, next) {
-    //     try {
-    //       let genres = await ConcertsDAO.getGenres()
-    //       res.json(genres)
     //     } catch (e) {
     //       console.log(`api, ${e}`)
     //       res.status(500).json({ error: e })

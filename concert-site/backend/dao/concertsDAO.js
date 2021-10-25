@@ -84,12 +84,12 @@ export default class ConcertsDAO {
 
             return updateResponse
         } catch (e) {
-            console.error(`Unable to post concert: ${e}`)
+            console.error(`Unable to update concert: ${e}`)
             return { error: e }
         }
     }
 
-    static async deleteConcert(concertId, userId, bands) {
+    static async deleteConcert(concertId, userId) {
         try {
             const deleteResponse = await concerts.deleteOne({
                 _id: ObjectId(concertId),
@@ -104,8 +104,17 @@ export default class ConcertsDAO {
     }
 
 
-
-
+    // TODO: 1:00:30
+    static async getGenres() {
+        let genres = []
+        try {
+            genres = await concerts.distinct("genre")
+            return genres
+        } catch (e) {
+            console.error(`Unable to get genres, ${e}`)
+            return genres
+        }
+    }
 
 
 
@@ -153,17 +162,6 @@ export default class ConcertsDAO {
     //     } catch (e) {
     //       console.error(`Something went wrong in getConcertByID: ${e}`)
     //       throw e
-    //     }
-    //   }
-
-    //   static async getGenres() {
-    //     let genres = []
-    //     try {
-    //       genres = await concerts.distinct("genre")
-    //       return genres
-    //     } catch (e) {
-    //       console.error(`Unable to get genres, ${e}`)
-    //       return genres
     //     }
     //   }
 }
