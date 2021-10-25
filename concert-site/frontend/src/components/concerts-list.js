@@ -6,7 +6,7 @@ import React from "react";
 function ConcertsList() {
   return (
     <div className="App">
-      Hello, World
+      Concert List
     </div>
   );
 }
