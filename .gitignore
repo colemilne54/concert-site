@@ -23,4 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #mine
-/backend/node_modules
+/concert-site/backend/node_modules
+/concert-site/frontend/node_modules
+**/node_modules
+node_modules
