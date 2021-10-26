@@ -39,9 +39,6 @@ const ConcertsList = props => {
         ConcertDataService.getAll()
             .then(response => {
                 console.log(response.data);
-                console.log("------------------------------");
-                console.log(response.data.concerts);
-                console.log("------------------------------");
                 setConcerts(response.data.concerts);
             })
             .catch(e => {
@@ -155,14 +152,6 @@ const ConcertsList = props => {
             <div className="row">
                 {concerts.map((concert) => {
                     // TODO: may cause issues, I took out ${concert.address.building}
-                    console.log("!!!!!!!!!!!!!!!!!!!!!");
-                    try {
-                        console.log(typeof(concert.address.street));
-                    } catch(e) {
-                        console.log("Err caught: " + e);
-                    }
-                    
-                    console.log("!!!!!!!!!!!!!!!!!!!!!");
                     const address = `${concert.address.street}, ${concert.address.zipcode}`;
                     return (
                         <div className="col-lg-4 pb-1">
@@ -189,7 +178,6 @@ const ConcertsList = props => {
             </div>
         </div>
     );
-
 };
 
 export default ConcertsList;
