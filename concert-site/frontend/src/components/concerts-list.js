@@ -156,7 +156,12 @@ const ConcertsList = props => {
                 {concerts.map((concert) => {
                     // TODO: may cause issues, I took out ${concert.address.building}
                     console.log("!!!!!!!!!!!!!!!!!!!!!");
-                    console.log(typeof(concert.address.street));
+                    try {
+                        console.log(typeof(concert.address.street));
+                    } catch(e) {
+                        console.log("Err caught: " + e);
+                    }
+                    
                     console.log("!!!!!!!!!!!!!!!!!!!!!");
                     const address = `${concert.address.street}, ${concert.address.zipcode}`;
                     return (
