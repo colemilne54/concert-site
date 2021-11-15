@@ -24,7 +24,7 @@ function App() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
-				<a href="/concerts" className="navbar-brand">
+				<a href="/" className="navbar-brand">
 					Concert Site
 				</a>
 				<div className="navbar-nav mr-auto">

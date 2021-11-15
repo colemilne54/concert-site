@@ -1,6 +1,21 @@
 {
-	"user_name": "Rialto",
-	"user_id": "123",
-	"bands": "50",
-	"venue_name": "Rialto"
-}
+	"address": {
+	  "coord": [
+		{
+		  "$numberDouble": "-111.0459"
+		},
+		{
+		  "$numberDouble": "45.6847"
+		}
+	  ],
+	  "street": "506 N 7th Ave",
+	  "zipcode": "59715"
+	},
+	"city": "Bozeman",
+	"state": "Montana",
+	"genre": "Rap",
+	"bands": "E40",
+	"concert_id": "1658948",
+	"venue_name": "The Elm",
+	"venue_type": "music venue"
+  }

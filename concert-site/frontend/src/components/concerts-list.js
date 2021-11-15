@@ -88,11 +88,11 @@ const ConcertsList = props => {
         }
     };
 
-
+    // width 100% in input group, but kinda like this setup over vid
     return (
         <div>
-            <div className="row pb-1">
-                <div className="input-group col-lg-4">
+            <div className="row pb-2">
+                <div className="input-group col-lg-4 pb-1">
                     <input
                         type="text"
                         className="form-control"
@@ -110,7 +110,7 @@ const ConcertsList = props => {
                         </button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg-4 pb-1">
                     <input
                         type="text"
                         className="form-control"
@@ -128,7 +128,7 @@ const ConcertsList = props => {
                         </button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg-4 pb-1">
 
                     <select onChange={onChangeSearchGenre}>
                         {genres.map(genre => {
@@ -159,7 +159,7 @@ const ConcertsList = props => {
                                 <div className="card-body">
                                     <h5 className="card-title">{concert.bands}</h5>
                                     <p className="card-text">
-                                        <strong>Cuisine: </strong>{concert.genre}<br />
+                                        <strong>Genre: </strong>{concert.genre}<br />
                                         <strong>Address: </strong>{address}
                                     </p>
                                     <div className="row">

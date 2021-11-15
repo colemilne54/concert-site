@@ -5,3 +5,14 @@ pre fill in addy for venue account type
 
 null so try to get req body to print out. if thats not null its internal connection issue
 if it is null, its how its trying to grab from server
+
+
+10/26 to do moving foward:
+
+current put is not how we want to display info or even take in
+
+so 
+
+change view reviews to more details
+change put to almost final data (or at least first 2 entries)
+then do the add concert for frontend
