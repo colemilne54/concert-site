@@ -112,12 +112,9 @@ export default class ConcertsDAO {
         }
     }
 
-
-    // TODO: 1:00:30
     static async getGenres() {
         let genres = []
         try {
-            // TODO: possibly "genres"
             genres = await concerts.distinct("genre")
             return genres
         } catch (e) {

@@ -134,21 +134,4 @@ export default class ConcertsController {
         }
     }
 
-
-
-
-    //   static async apiGetConcertById(req, res, next) {
-    //     try {
-    //       let id = req.params.id || {}
-    //       let concert = await ConcertsDAO.getConcertByID(id)
-    //       if (!concert) {
-    //         res.status(404).json({ error: "Not found" })
-    //         return
-    //       }
-    //       res.json(concert)
-    //     } catch (e) {
-    //       console.log(`api, ${e}`)
-    //       res.status(500).json({ error: e })
-    //     }
-    //   }
 }

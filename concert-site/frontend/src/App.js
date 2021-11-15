@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,7 +36,7 @@ function App() {
 							Concerts
 						</Link>
 					</li>
-					<li className="nav-item" >
+					<li className="nav-item">
 						{user ? (
 							<a onClick={logout} className="nav-link" style={{ cursor: 'pointer' }}>
 								Logout {user.name}
