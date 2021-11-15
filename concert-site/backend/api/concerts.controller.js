@@ -40,6 +40,7 @@ export default class ConcertsController {
             const bands = req.body.bands
             const venueType = req.body.venueType
             const genre = req.body.genre
+            const date = req.body.date
             const address = {
                 street: req.body.street,
                 zipcode: req.body.zipcode
@@ -56,7 +57,8 @@ export default class ConcertsController {
                 bands,
                 userInfo,
                 address,
-                genre
+                genre,
+                date
             )
             res.json({ status: "success" })
         } catch (e) {
