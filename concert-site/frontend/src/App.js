@@ -8,9 +8,11 @@ import AddConcert from "./components/add-concert";
 import Concert from "./components/concert";
 import ConcertsList from "./components/concerts-list";
 import Login from "./components/login";
+import logo from "./concert-hq-logo.png";
 
 
 function App() {
+
 	const [user, setUser] = React.useState(null);
 
 	async function login(user = null) {
@@ -24,6 +26,9 @@ function App() {
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-dark bg-dark">
+				<a class="navbar-brand" href="/">
+      				<img src={logo} height="125"></img>
+    			</a>
 				<a href="/" className="navbar-brand">
 					ConcertHQ
 				</a>

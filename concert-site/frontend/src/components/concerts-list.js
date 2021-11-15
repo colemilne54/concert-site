@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import ConcertDataService from "../services/concert";
 import { Link } from "react-router-dom";
 
-
 const ConcertsList = props => {
 
     const [concerts, setConcerts] = useState([]);
@@ -207,15 +206,16 @@ const ConcertsList = props => {
                                 <div className="card-body">
                                     <h5 className="card-title">{concert.bands}</h5>
                                     <p className="card-text">
-                                        <strong>Genre: </strong>{concert.genre}<br />
+                                        <strong>Date: </strong>{concert.date} <br />
+                                        <strong>Genre: </strong>{concert.genre} <br />
                                         <strong>Address: </strong>{address} <br />
                                         <strong>Venue Name: </strong>{concert.venue_name} <br />
                                         <strong>Venue Type: </strong>{concert.venueType}
                                     </p>
                                     <div className="row">
-                                        <Link to={concert.link} className="btn btn-primary col-lg-5 mx-1 mb-1">
+                                        <a href={concert.link} className="btn btn-primary col-lg-5 mx-1 mb-1">
                                             View Details
-                                        </Link>
+                                        </a>
                                         <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
                                     </div>
                                 </div>
