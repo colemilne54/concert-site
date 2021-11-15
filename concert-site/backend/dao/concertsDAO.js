@@ -60,7 +60,7 @@ export default class ConcertsDAO {
     }
 
     // TODO: generate concert id
-    static async addConcert(venueName, venueType, bands, user, address) {
+    static async addConcert(venueName, venueType, bands, user, address, genre) {
         try {
             const concertDoc = {
                 user_name: user.userName,
@@ -69,7 +69,8 @@ export default class ConcertsDAO {
                 venue_name: venueName,
                 venueType: venueType,
                 zipcode: address.zipcode,
-                street: address.street
+                street: address.street,
+                genre: genre
                 // address: address
                 // concert_id: ObjectId(concertId),
             }
