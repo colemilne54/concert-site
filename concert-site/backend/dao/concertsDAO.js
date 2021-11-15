@@ -27,8 +27,10 @@ export default class ConcertsDAO {
                 query = { $text: { $search: filters["bands"] } }
             } else if ("genre" in filters) {
                 query = { "genre": { $eq: filters["genre"] } }
+            } else if ("venueType" in filters) {
+                query = { "venueType": { $eq: filters["venueType"] } }
             } else if ("zipcode" in filters) {
-                query = { "address.zipcode": { $eq: filters["zipcode"] } }
+                query = { "zipcode": { $eq: filters["zipcode"] } }
             }
         }
 
@@ -58,13 +60,17 @@ export default class ConcertsDAO {
     }
 
     // TODO: generate concert id
-    static async addConcert(venueName, bands, user) {
+    static async addConcert(venueName, venueType, bands, user, address) {
         try {
             const concertDoc = {
                 user_name: user.userName,
                 user_id: user.userId,
                 bands: bands,
                 venue_name: venueName,
+                venueType: venueType,
+                zipcode: address.zipcode,
+                street: address.street
+                // address: address
                 // concert_id: ObjectId(concertId),
             }
 
@@ -114,6 +120,17 @@ export default class ConcertsDAO {
         } catch (e) {
             console.error(`Unable to get genres, ${e}`)
             return genres
+        }
+    }
+
+    static async getVenueTypes() {
+        let venueTypes = []
+        try {
+            venueTypes = await concerts.distinct("venueType")
+            return venueTypes
+        } catch (e) {
+            console.error(`Unable to get venue types, ${e}`)
+            return venueTypes
         }
     }
 

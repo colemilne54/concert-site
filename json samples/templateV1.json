@@ -17,5 +17,5 @@
 	"bands": "E40",
 	"concert_id": "1658948",
 	"venue_name": "The Elm",
-	"venue_type": "music venue"
+	"venueType": "music venue"
   }

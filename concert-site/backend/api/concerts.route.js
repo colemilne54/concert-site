@@ -4,6 +4,7 @@ import ConcertsController from "./concerts.controller.js"
 const router = express.Router()
 
 router.route("/genres").get(ConcertsController.apiGetConcertGenres)
+router.route("/venueTypes").get(ConcertsController.apiGetConcertVenueTypes)
 
 router
     .route("/").get(ConcertsController.apiGetConcerts)

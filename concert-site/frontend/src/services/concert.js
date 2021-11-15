@@ -30,6 +30,10 @@ class ConcertDataService {
     return http.get(`/genres`);
   }
 
+  getVenueTypes(id) {
+    return http.get(`/venueTypes`);
+  }
+
 }
 
 export default new ConcertDataService();

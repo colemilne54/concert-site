@@ -6,7 +6,9 @@ export default class ConcertsController {
         const page = req.query.page ? parseInt(req.query.page, 10) : 0
 
         let filters = {}
-        if (req.query.genre) {
+        if (req.query.venueType) {
+            filters.venueType = req.query.venueType
+        } else if (req.query.genre) {
             filters.genre = req.query.genre
         } else if (req.query.zipcode) {
             filters.zipcode = req.query.zipcode
@@ -36,6 +38,11 @@ export default class ConcertsController {
             // const concertId = req.body.concert_id
             const venueName = req.body.venue_name
             const bands = req.body.bands
+            const venueType = req.body.venueType
+            const address = {
+                street: req.body.street,
+                zipcode: req.body.zipcode
+            }
             const userInfo = {
                 userName: req.body.user_name,
                 userId: req.body.user_id
@@ -44,8 +51,10 @@ export default class ConcertsController {
             const ConcertResponse = await ConcertsDAO.addConcert(
                 // concertId,
                 venueName,
+                venueType,
                 bands,
                 userInfo,
+                address
             )
             res.json({ status: "success" })
         } catch (e) {
@@ -107,7 +116,18 @@ export default class ConcertsController {
           console.log(`api, ${e}`)
           res.status(500).json({ error: e })
         }
-      }
+    }
+
+    static async apiGetConcertVenueTypes(req, res, next) {
+        try {
+          let venueTypes = await ConcertsDAO.getVenueTypes()
+          res.json(venueTypes)
+        } catch (e) {
+          console.log(`api, ${e}`)
+          res.status(500).json({ error: e })
+        }
+    }
+
 
 
 
