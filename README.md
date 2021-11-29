@@ -1,6 +1,6 @@
 For Christopher and Jack:\
 cd into backend folder: nodemon server\
-cd into frontend folder: npm start\
+cd into frontend folder: npm start
 
 
 # Getting Started with Create React App
