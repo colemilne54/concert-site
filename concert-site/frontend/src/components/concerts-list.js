@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import ConcertDataService from "../services/concert";
 import { Link } from "react-router-dom";
+import '../style.css';
 
 const ConcertsList = props => {
 
@@ -245,10 +246,10 @@ const ConcertsList = props => {
                                         <strong>City: </strong>{concert.city}
                                     </p>
                                     <div className="row">
-                                        <a href={concert.link} className="btn btn-primary col-lg-5 mx-1 mb-1">
+                                        <a href={concert.link} className="btn btn-primary col-lg-5 mx-1 mb-1 btn-color">
                                             View Details
                                         </a>
-                                        <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
+                                        <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1 btn-color">View Map</a>
                                     </div>
                                 </div>
                             </div>
