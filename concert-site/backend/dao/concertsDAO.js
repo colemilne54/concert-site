@@ -31,6 +31,8 @@ export default class ConcertsDAO {
                 query = { "venueType": { $eq: filters["venueType"] } }
             } else if ("zipcode" in filters) {
                 query = { "zipcode": { $eq: filters["zipcode"] } }
+            } else if ("city" in filters) {
+                query = { "city": { $eq: filters["city"] } }
             }
         }
 

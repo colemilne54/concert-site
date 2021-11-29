@@ -9,6 +9,7 @@ const ConcertsList = props => {
     const [concerts, setConcerts] = useState([]);
     const [searchBands, setSearchBands] = useState("");
     const [searchZip, setSearchZip] = useState("");
+    const [searchCity, setSearchCity] = useState("");
 
     const [searchGenre, setSearchGenre] = useState("");
     const [searchVenueType, setSearchVenueType] = useState("");
@@ -31,6 +32,11 @@ const ConcertsList = props => {
     const onChangeSearchZip = e => {
         const searchZip = e.target.value;
         setSearchZip(searchZip);
+    };
+
+    const onChangeSearchCity = e => {
+        const searchCity = e.target.value;
+        setSearchCity(searchCity);
     };
 
     const onChangeSearchGenre = e => {
@@ -84,6 +90,8 @@ const ConcertsList = props => {
         ConcertDataService.find(query, by)
             .then(response => {
                 console.log(response.data);
+                console.log("-------------------");
+                console.log(response.data.filters);
                 setConcerts(response.data.concerts);
             })
             .catch(e => {
@@ -97,6 +105,10 @@ const ConcertsList = props => {
 
     const findByZip = () => {
         find(searchZip, "zipcode")
+    };
+    
+    const findByCity = () => {
+        find(searchCity, "city")
     };
 
     const findByGenre = () => {
@@ -156,6 +168,25 @@ const ConcertsList = props => {
                     </div>
                 </div>
                 <div className="input-group col-lg-4 pb-1">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search by city"
+                        value={searchCity}
+                        onChange={onChangeSearchCity}
+                    />
+                    <div className="input-group-append">
+                        <button
+                            className="btn btn-outline-secondary"
+                            type="button"
+                            onClick={findByCity}
+                        >
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+                <div className="input-group col-lg-4 pb-1">
 
                     <select onChange={onChangeSearchGenre}>
                         {genres.map(genre => {
@@ -210,7 +241,8 @@ const ConcertsList = props => {
                                         <strong>Genre: </strong>{concert.genre} <br />
                                         <strong>Address: </strong>{address} <br />
                                         <strong>Venue Name: </strong>{concert.venue_name} <br />
-                                        <strong>Venue Type: </strong>{concert.venueType}
+                                        <strong>Venue Type: </strong>{concert.venueType} <br />
+                                        <strong>City: </strong>{concert.city}
                                     </p>
                                     <div className="row">
                                         <a href={concert.link} className="btn btn-primary col-lg-5 mx-1 mb-1">
