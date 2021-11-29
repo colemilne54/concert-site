@@ -9,12 +9,18 @@
 // const Concert = props => {
 //   const initialConcertState = {
 //     id: null,
+//     user_name: "",
+//     user_id: "",
 //     bands: "",
 //     street: "",
 //     zipcode: "",
 //     venueType: "",
 //     genre: "",
-//     venue_name: ""
+//     venue_name: "",
+//     date: "",
+//     link: "",
+//     state: "",
+//     city: ""
 //   };
 //   const [concert, setConcert] = useState(initialConcertState);
 
