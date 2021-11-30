@@ -43,7 +43,7 @@ const AddConcert = props => {
   // figure out the props.etc.etc
   if (props.location.state && props.location.state.currentConcert) {
     editing = true;
-    initialConcertState = props.location.state.currentReview.text
+    initialConcertState = props.location.state.currentConcert.text
   }
 
   const [concert, setConcert] = useState(initialConcertState);
@@ -59,11 +59,11 @@ const AddConcert = props => {
       text: concert,
       name: props.user.name,
       user_id: props.user.id,
-      restaurant_id: props.match.params.id
+      concert_id: props.match.params.id
     };
 
     if (editing) {
-      data.review_id = props.location.state.currentReview._id
+      data.concert_id = props.location.state.currentConcert._id
       ConcertDataService.updateConcert(data)
         .then(response => {
           setSubmitted(true);
@@ -75,10 +75,12 @@ const AddConcert = props => {
     } else {
       ConcertDataService.createConcert(data)
         .then(response => {
+          console.log(data.text);
           setSubmitted(true);
           console.log(response.data);
         })
         .catch(e => {
+          console.log(data.text);
           console.log(e);
         });
     }
@@ -92,7 +94,7 @@ const AddConcert = props => {
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
-            <Link to={"/restaurants/" + props.match.params.id} className="btn btn-success">
+            <Link to={"/"} className="btn btn-success">
               Back to Concerts
             </Link>
           </div>
@@ -119,7 +121,7 @@ const AddConcert = props => {
 
       ) : (
       <div>
-        Please log in.
+        Add Concert
       </div>
       )}
 

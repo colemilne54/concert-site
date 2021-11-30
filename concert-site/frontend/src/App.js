@@ -32,8 +32,8 @@ function App() {
 				</a>
 				<div className="navbar-nav mr-auto">
 					<li className="nav-item">
-						<Link to={"/concerts"} className="nav-link">
-							Concerts
+						<Link to={"/add-concert"} className="nav-link">
+							Add Concert
 						</Link>
 					</li>
 					<li className="nav-item">
@@ -56,7 +56,7 @@ function App() {
 				<Switch>
 					<Route exact path={["/"]} component={ConcertsList} />
 					<Route
-						path="/concerts"
+						path="/add-concert"
 						render={(props) => (
 							<AddConcert {...props} user={user} />
 						)}
