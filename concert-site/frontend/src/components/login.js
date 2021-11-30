@@ -1,14 +1,15 @@
 // import logo from './logo.svg';
 // import './App.css';
+//import React, { useState } from "react";
 import React from "react";
 
 
-const login = props => {
+const Login = props => {
   
   const initialUserState = {
     name: "",
     userpin: "",
-    id: "",
+    id: ""
   };
 
   const [user, setUser] = useState(initialUserState);
