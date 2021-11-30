@@ -3,7 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddConcert from "./components/add-concert";
-import Concert from "./components/concert";
+import Concert from "./services/concert";
 import ConcertsList from "./components/concerts-list";
 import Login from "./components/login";
 import logo from "./concert-hq-logo.png";

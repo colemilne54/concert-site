@@ -93,13 +93,13 @@ const AddConcert = props => {
           <div>
             <h4>You submitted successfully!</h4>
             <Link to={"/restaurants/" + props.match.params.id} className="btn btn-success">
-              Back to Restaurant
+              Back to Concerts
             </Link>
           </div>
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="description">{ editing ? "Edit" : "Create" } Review</label>
+              <label htmlFor="description">{ editing ? "Edit" : "Create" } Concert</label>
               <input
                 type="text"
                 className="form-control"
