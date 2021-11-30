@@ -1,33 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
 
-const Contact = () => {
+import addConcertImport from './imports/addConcertImport';
 
-    const [concertData, setConcertData] = useState({});
+export default function AddConcertForm() {
 
-    const concertData = async() => {
-        try {
-            const res = await fetch('/', {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            });
+    const [bands, setBands] = useState("");
+    const [genre, setGenre] = useState("");
 
-            const data = await res.json();
-            console.log(data);
-            setConcertData(data);
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
-            if (!res.status === 200) {
-                const error = new Error(res.error);
-                throw error;
-            }
-        } catch (err) {
-            console.log(err);
+        const newConcert = {
+            bands,
+            genre
         }
+        console.log(newConcert);
     }
 
-    userEffect(() => {
-        userConcert();
-    }, []);
+    let concertData = {
+        handleSubmit,
+        setBands,
+        setGenre
+    }
 
+    return (
+        <div>
+            <div>
+                <div>
+                    <addConcertImport concertState={concertData} />
+                </div>
+            </div>
+        </div>
+    )
 }
+
+export default AddConcertForm;
+
