@@ -14,6 +14,7 @@ const AddConcert = props => {
   const [zipcode, setZipcode] = useState("");
   const [link, setLink] = useState("");
   const [date, setDate] = useState("");
+  const [img_link, setImg_link] = useState("");
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -53,6 +54,10 @@ const AddConcert = props => {
     setLink(event.target.value);
   };
 
+  const handleInputChangeImgLink = event => {
+    setImg_link(event.target.value);
+  };
+
   const handleInputChangeDate = event => {
     setDate(event.target.value);
   }
@@ -70,7 +75,8 @@ const AddConcert = props => {
       street: street,
       zipcode: zipcode,
       link: link,
-      date: date
+      date: date,
+      img_link: img_link
     };
 
       ConcertDataService.createConcert(data)
@@ -209,7 +215,19 @@ const AddConcert = props => {
                 name="textLink"
               />
 
-              <label htmlFor="description">{ "Add the Date of the Concert:" }</label>
+              <label htmlFor="description">{ "Add the Concert Flyer Image Permalink:" }</label>
+              
+              <input
+                type="text"
+                className="form-control"
+                id="textImgLink"
+                required
+                value={img_link}
+                onChange={handleInputChangeImgLink}
+                name="textImgLink"
+              />
+
+              <label htmlFor="description">{ "Add the Date (MM/DD/YYYY) of the Concert:" }</label>
               
               <input
                 type="text"

@@ -46,6 +46,7 @@ export default class ConcertsController {
             const link = req.body.link
             const state = req.body.state
             const city = req.body.city
+            const img_link = req.body.img_link
             const address = {
                 street: req.body.street,
                 zipcode: req.body.zipcode
@@ -66,7 +67,8 @@ export default class ConcertsController {
                 date,
                 link,
                 state,
-                city
+                city,
+                img_link
             )
             res.json({ status: "success" })
         } catch (e) {

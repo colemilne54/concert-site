@@ -61,8 +61,7 @@ export default class ConcertsDAO {
         }
     }
 
-    // TODO: generate concert id
-    static async addConcert(venueName, venueType, bands, user, address, genre, date, link, state, city) {
+    static async addConcert(venueName, venueType, bands, user, address, genre, date, link, state, city, img_link) {
         try {
             const concertDoc = {
                 user_name: user.userName,
@@ -76,9 +75,8 @@ export default class ConcertsDAO {
                 date: date,
                 link: link,
                 state: state,
-                city: city
-                // address: address
-                // concert_id: ObjectId(concertId),
+                city: city,
+                img_link: img_link
             }
 
             return await concerts.insertOne(concertDoc)
@@ -137,53 +135,4 @@ export default class ConcertsDAO {
             return venueTypes
         }
     }
-
-
-
-
-
-
-    //   static async getConcertByID(id) {
-    //     try {
-    //       const pipeline = [
-    //         {
-    //             $match: {
-    //                 _id: new ObjectId(id),
-    //             },
-    //         },
-    //               {
-    //                   $lookup: {
-    //                       from: "reviews",
-    //                       let: {
-    //                           id: "$_id",
-    //                       },
-    //                       pipeline: [
-    //                           {
-    //                               $match: {
-    //                                   $expr: {
-    //                                       $eq: ["$concert_id", "$$id"],
-    //                                   },
-    //                               },
-    //                           },
-    //                           {
-    //                               $sort: {
-    //                                   date: -1,
-    //                               },
-    //                           },
-    //                       ],
-    //                       as: "reviews",
-    //                   },
-    //               },
-    //               {
-    //                   $addFields: {
-    //                       reviews: "$reviews",
-    //                   },
-    //               },
-    //           ]
-    //       return await concerts.aggregate(pipeline).next()
-    //     } catch (e) {
-    //       console.error(`Something went wrong in getConcertByID: ${e}`)
-    //       throw e
-    //     }
-    //   }
 }
