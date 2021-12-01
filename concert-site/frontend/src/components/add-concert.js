@@ -41,28 +41,11 @@ import ConcertDataService from "../services/concert";
 import { Link } from "react-router-dom";
 
 const AddConcert = props => {
-  //   const initialConcertState = {
-  //     city: "",
-  //     state:"",
-  //     genre:"",
-  //     bands:"",
-  //     concert_id:"",
-  //     venue_name:"",
-  //     venueType:"",
-  //     street:"",
-  //     zipcode:"",
-  //     link:"",
-  //     date:""
-  //  };
 
-  
-
-  // const [concert, setConcert] = useState(initialConcertState);
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [genre, setGenre] = useState("");
   const [bands, setBands] = useState("");
-  const [concert_id, setConcert_id] = useState("12345678");
   const [venue_name, setVenue_name] = useState("");
   const [venueType, setVenueType] = useState("");
   const [street, setStreet] = useState("");
@@ -86,10 +69,6 @@ const AddConcert = props => {
 
   const handleInputChangeBands = event => {
     setBands(event.target.value);
-  };
-  // for this concert id i need to genreate a random number for the id
-  const handleInputChangeConcertId = event => {
-    setConcert_id(event.target.value);
   };
 
   const handleInputChangeVenueName = event => {
@@ -124,7 +103,6 @@ const AddConcert = props => {
       state: state,
       genre: genre,
       bands: bands,
-      // concert_id: concert_id,
       venue_name: venue_name,
       venueType: venueType,
       street: street,
