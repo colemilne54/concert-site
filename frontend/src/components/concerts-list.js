@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import React, { useState, useEffect } from "react";
 import ConcertDataService from "../services/concert";
 import { Link } from "react-router-dom";
@@ -246,7 +244,7 @@ const ConcertsList = props => {
                                         <strong>City: </strong>{concert.city}
                                     </p>
                                     <div className="row">
-                                        <a href={concert.link} className="btn btn-primary col-lg-5 mx-1 mb-1 btn-color">
+                                        <a href={concert.link} target="_blank" rel="noreferrer noopener" className="btn btn-primary col-lg-5 mx-1 mb-1 btn-color">
                                             View Details
                                         </a>
                                         <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1 btn-color">View Map</a>
