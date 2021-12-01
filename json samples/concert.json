@@ -1,9 +1,0 @@
-{
-    "address": { "coord": [{ "$numberDouble": "-111.0398375" }, { "$numberDouble": "45.6621521" }], "street": "1705 S Willson Ave", "zipcode": "59715" },
-    "city": "Bozeman",
-    "state": "Montana",
-    "genre": "American",
-    "venue-type": "frat party",
-    "bands": "Slayer",
-    "concert_id": "40356018"
-}
