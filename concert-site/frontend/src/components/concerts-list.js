@@ -128,7 +128,6 @@ const ConcertsList = props => {
         }
     };
 
-    // width 100% in input group, but kinda like this setup over vid
     return (
         <div>
             <div className="row pb-2">
@@ -229,12 +228,11 @@ const ConcertsList = props => {
             </div>
             <div className="row">
                 {concerts.map((concert) => {
-                    // TODO: may cause issues, I took out ${concert.address.building}
-                    // const address = `${concert.address.street}, ${concert.address.zipcode}`;
                     const address = `${concert.street}, ${concert.zipcode}`;
                     return (
                         <div className="col-lg-4 pb-1">
                             <div className="card">
+                                <img className="card-img-top crd-img" src={concert.img_link} alt="Concert Flyer"></img>
                                 <div className="card-body">
                                     <h5 className="card-title">{concert.bands}</h5>
                                     <p className="card-text">
