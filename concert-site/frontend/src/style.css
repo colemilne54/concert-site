@@ -1,4 +1,11 @@
 .btn-color {
-    background-color: #39FF14 !important;
-    color: black !important;
-  }
+  background-color: #39FF14 !important;
+  color: black !important;
+  font-weight: bolder;
+}
+
+.btn-margin-top {
+  margin-top: 10px;
+}
+
+

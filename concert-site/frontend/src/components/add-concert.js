@@ -1,41 +1,3 @@
-// import React, { useState } from 'react';
-
-// import addConcertImport from './imports/addConcertImport';
-
-// export default function AddConcertForm() {
-
-//     const [bands, setBands] = useState("");
-//     const [genre, setGenre] = useState("");
-
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-
-//         const newConcert = {
-//             bands,
-//             genre
-//         }
-//         console.log(newConcert);
-//     }
-
-//     let concertData = {
-//         handleSubmit,
-//         setBands,
-//         setGenre
-//     }
-
-//     return (
-//         <div>
-//             <div>
-//                 <div>
-//                     <addConcertImport concertState={concertData} />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default AddConcertForm;
-
 import React, { useState } from "react";
 import ConcertDataService from "../services/concert";
 import { Link } from "react-router-dom";
@@ -111,17 +73,6 @@ const AddConcert = props => {
       date: date
     };
 
-    // if (editing) {
-    //   data.review_id = props.location.state.currentReview._id
-    //   RestaurantDataService.updateReview(data)
-    //     .then(response => {
-    //       setSubmitted(true);
-    //       console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // } else {
       ConcertDataService.createConcert(data)
         .then(response => {
           setSubmitted(true);
@@ -270,7 +221,7 @@ const AddConcert = props => {
                 name="textDate"
               />
             
-            <button onClick={saveConcert} className="btn btn-success">
+            <button onClick={saveConcert} className="btn btn-success btn-color btn-margin-top">
               Submit
             </button>
           

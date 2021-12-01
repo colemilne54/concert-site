@@ -1,8 +1,5 @@
-// // import logo from './logo.svg';
-// // import './App.css';
 import React, { useState } from "react";
-// //import React from "react";
-
+import "../style.css"
 
 const Login = props => {
   
@@ -41,7 +38,7 @@ const Login = props => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="id">ID</label>
+          <label htmlFor="id">ID (To get your id, please call 406-555-5555)</label>
           <input
             type="text"
             className="form-control"
@@ -53,7 +50,7 @@ const Login = props => {
           />
         </div>
 
-        <button onClick={login} className="btn btn-success">
+        <button onClick={login} className="btn btn-success btn-color btn-margin-top">
           Login
         </button>
       </div>
