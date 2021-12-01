@@ -232,7 +232,9 @@ const ConcertsList = props => {
                     return (
                         <div className="col-lg-4 pb-1">
                             <div className="card">
+                                {concert.img_link != null && 
                                 <img className="card-img-top crd-img" src={concert.img_link} alt="Concert Flyer"></img>
+                                }
                                 <div className="card-body">
                                     <h5 className="card-title">{concert.bands}</h5>
                                     <p className="card-text">
