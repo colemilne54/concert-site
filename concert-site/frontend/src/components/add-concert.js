@@ -101,7 +101,7 @@ const AddConcert = props => {
             <h3>Please fill out the info fields with the information about your concert</h3>
           <form>
               
-              <label htmlFor="description">{ "Add the  City:" }</label>
+              <label htmlFor="description">{ "Add the City:" }</label>
               
               <input
                 type="text"
