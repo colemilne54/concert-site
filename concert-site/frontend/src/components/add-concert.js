@@ -118,11 +118,13 @@ const AddConcert = props => {
 
   const saveConcert = () => {
     var data = {
+      user_name: props.user.name,
+      user_id: props.user.id,
       city: city,
       state: state,
       genre: genre,
       bands: bands,
-      concert_id: concert_id,
+      // concert_id: concert_id,
       venue_name: venue_name,
       venueType: venueType,
       street: street,
@@ -161,7 +163,7 @@ const AddConcert = props => {
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
-            <Link to={"/concerts-list/" + props.match.params.id} className="btn btn-success">
+            <Link to={"/" + props.match.params.id} className="btn btn-success">
               Back to Concerts
             </Link>
           </div>
@@ -266,14 +268,14 @@ const AddConcert = props => {
                 name="textZipcode"
               />
 
-                <label htmlFor="description">{ "Add the Website Link to buy tickets:" }</label>
+              <label htmlFor="description">{ "Add the Website Link to buy tickets:" }</label>
               
               <input
                 type="text"
                 className="form-control"
                 id="textLink"
                 required
-                value={Link}
+                value={link}
                 onChange={handleInputChangeLink}
                 name="textLink"
               />
