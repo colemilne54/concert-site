@@ -92,7 +92,7 @@ const AddConcert = props => {
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
-            <Link to={"/" + props.match.params.id} className="btn btn-success">
+            <Link to={"/"} className="btn btn-success">
               Back to Concerts
             </Link>
           </div>
