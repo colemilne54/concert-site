@@ -10,8 +10,8 @@ export default class ConcertsController {
             filters.venueType = req.query.venueType
         } else if (req.query.genre) {
             filters.genre = req.query.genre
-        } else if (req.query.zipcode) {
-            filters.zipcode = req.query.zipcode
+        } else if (req.query.venue_name) {
+            filters.venue_name = req.query.venue_name
         } else if (req.query.bands) {
             filters.bands = req.query.bands
         } else if (req.query.city) {
@@ -38,7 +38,7 @@ export default class ConcertsController {
     static async apiPostConcert(req, res, next) {
         try {
             // const concertId = req.body.concert_id
-            const venueName = req.body.venue_name
+            const venue_name = req.body.venue_name
             const bands = req.body.bands
             const venueType = req.body.venueType
             const genre = req.body.genre
@@ -58,7 +58,7 @@ export default class ConcertsController {
 
             const ConcertResponse = await ConcertsDAO.addConcert(
                 // concertId,
-                venueName,
+                venue_name,
                 venueType,
                 bands,
                 userInfo,

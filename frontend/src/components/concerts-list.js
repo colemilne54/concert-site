@@ -7,7 +7,7 @@ const ConcertsList = props => {
 
     const [concerts, setConcerts] = useState([]);
     const [searchBands, setSearchBands] = useState("");
-    const [searchZip, setSearchZip] = useState("");
+    const [searchVenueName, setSearchVenueName] = useState("");
     const [searchCity, setSearchCity] = useState("");
 
     const [searchGenre, setSearchGenre] = useState("");
@@ -28,9 +28,9 @@ const ConcertsList = props => {
         setSearchBands(searchBands);
     };
 
-    const onChangeSearchZip = e => {
-        const searchZip = e.target.value;
-        setSearchZip(searchZip);
+    const onChangeSearchVenueName = e => {
+        const searchVenueName = e.target.value;
+        setSearchVenueName(searchVenueName);
     };
 
     const onChangeSearchCity = e => {
@@ -102,8 +102,8 @@ const ConcertsList = props => {
         find(searchBands, "bands")
     };
 
-    const findByZip = () => {
-        find(searchZip, "zipcode")
+    const findByVenueName = () => {
+        find(searchVenueName, "venue_name")
     };
     
     const findByCity = () => {
@@ -151,15 +151,15 @@ const ConcertsList = props => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Search by zip"
-                        value={searchZip}
-                        onChange={onChangeSearchZip}
+                        placeholder="Search by Venue Name"
+                        value={searchVenueName}
+                        onChange={onChangeSearchVenueName}
                     />
                     <div className="input-group-append">
                         <button
                             className="btn btn-outline-secondary"
                             type="button"
-                            onClick={findByZip}
+                            onClick={findByVenueName}
                         >
                             Search
                         </button>

@@ -215,7 +215,7 @@ const AddConcert = props => {
                 name="textLink"
               />
 
-              <label htmlFor="description">{ "Add the Concert Flyer Image Permalink:" }</label>
+              <label htmlFor="description">{ "Add the Concert Flyer Image Permalink (Horizontal/ Banner Dimensions):" }</label>
               
               <input
                 type="text"

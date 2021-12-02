@@ -29,8 +29,8 @@ export default class ConcertsDAO {
                 query = { "genre": { $eq: filters["genre"] } }
             } else if ("venueType" in filters) {
                 query = { "venueType": { $eq: filters["venueType"] } }
-            } else if ("zipcode" in filters) {
-                query = { "zipcode": { $eq: filters["zipcode"] } }
+            } else if ("venue_name" in filters) {
+                query = { "venue_name": { $eq: filters["venue_name"] } }
             } else if ("city" in filters) {
                 query = { "city": { $eq: filters["city"] } }
             }
@@ -61,13 +61,13 @@ export default class ConcertsDAO {
         }
     }
 
-    static async addConcert(venueName, venueType, bands, user, address, genre, date, link, state, city, img_link) {
+    static async addConcert(venue_name, venueType, bands, user, address, genre, date, link, state, city, img_link) {
         try {
             const concertDoc = {
                 user_name: user.userName,
                 user_id: user.userId,
                 bands: bands,
-                venue_name: venueName,
+                venue_name: venue_name,
                 venueType: venueType,
                 zipcode: address.zipcode,
                 street: address.street,
