@@ -1,11 +1,11 @@
 import app from "./server.js"
-import mongodb from "mongodb"
+import mongodb from "../concert-site/backend/node_modules/mongodb"
 import dotenv from "dotenv"
 import ConcertsDAO from "./dao/concertsDAO.js"
 dotenv.config()
 const MongoClient = mongodb.MongoClient
 
-const port = process.env.port || 3012
+const port = process.env.port || 3000
 
 MongoClient.connect(
     process.env.CONCERTS_DB_URI,
