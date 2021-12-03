@@ -11,3 +11,5 @@ They can't be in some random folder structure to be accessed, it wants these fil
 ## Src
 
 Our source folder is what contains the heart of our frontend.
+Within the base of the src folder the only files we modified (from those React generates) was App.js in which we created out navbar and added small bits of code relating to the login
+
