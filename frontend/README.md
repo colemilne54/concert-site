@@ -22,7 +22,14 @@ It accomplishes this by using the http-common module to add get and put function
 
 ### Components
 
+In React components are essentially different pages
+
 The components folder contains the following files:
+
+
 * add-concert.js
+
+Add 
+
 * concerts-list.js
 * login.js
