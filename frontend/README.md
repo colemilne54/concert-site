@@ -40,3 +40,7 @@ In a traditonal search bar you are able to search by the name of the band, venue
 Dropdown search functionality exists for venue type and the band's genre.
 
 * login.js
+
+The last file is our login page which handles the login function.
+In our project it is not a fully built login system as you'd see in a production level site.
+For the use case in our project it is used to gatekeep the add concert function.
