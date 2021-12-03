@@ -5,7 +5,7 @@ import ConcertsDAO from "./dao/concertsDAO.js"
 dotenv.config()
 const MongoClient = mongodb.MongoClient
 
-const port = process.env.port || 5000
+const port = process.env.port || 3012
 
 MongoClient.connect(
     process.env.CONCERTS_DB_URI,
