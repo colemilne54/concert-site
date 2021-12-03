@@ -23,6 +23,6 @@ It accomplishes this by using the http-common module to add get and put function
 ### Components
 
 The components folder contains the following files:
-add-concert.js
-concerts-list.js
-login.js
+* add-concert.js
+* concerts-list.js
+* login.js
