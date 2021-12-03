@@ -22,14 +22,21 @@ It accomplishes this by using the http-common module to add get and put function
 
 ### Components
 
-In React components are essentially different pages
+For our project each React component serves as a page on our site.
 
 The components folder contains the following files:
 
-
 * add-concert.js
 
-Add 
+Add concerts is our form page where logged in users go to submit concert data to our Mongo database. 
 
 * concerts-list.js
+
+Concerts list is our hompage. This is the view users would go to view concerts.
+Each concert is a card containing relevant information to the given concert, a flyer image (if submitted), a button that takes them to the venues ticket/ details page, and a view map button that opens up a Google Maps page with the location of the concert.
+
+For search functionality you are able to find conerts via 5 different search methods.
+In a traditonal search bar you are able to search by the name of the band, venue name, or city of the venue. 
+Dropdown search functionality exists for venue type and the band's genre.
+
 * login.js
