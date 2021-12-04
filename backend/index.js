@@ -21,6 +21,6 @@ MongoClient.connect(
     .then(async client => {
         await ConcertsDAO.injectDB(client)
         app.listen(port, () => {
-            console.log(`Server running on https://csci331.cs.montana.edu:${port}`)
+            console.log(`Server running on http://csci331.cs.montana.edu:${port}`)
         })
     })
