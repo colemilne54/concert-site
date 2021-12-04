@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is our frontend code which is built using Reactjs.
 
-## Available Scripts
+## Public
 
-In the project directory, you can run:
+Our public folder contains our index.html and any other files that need to be accessed by our other React code in the src folder.
+The reason for things like our logo and favicon being placed here is that the way React references files.
+They can't be in some random folder structure to be accessed, it wants these files only in the public folder
 
-### `npm start`
+## Src
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Our source folder is what contains the heart of our frontend.
+Within the base of the src folder the only files we modified (from those React generates) was App.js in which we created out navbar and added small bits of code relating to the login
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Services
 
-### `npm test`
+Services contains concert.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This file has our ConcertDataService class which is used in our components to connect the frontend to our backend.
+It accomplishes this by using the http-common module to add get and put functionality that was used to accomplish various tasks that are outlined in the components section
 
-### `npm run build`
+### Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For our project each React component serves as a page on our site.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The components folder contains the following files:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* add-concert.js
 
-### `npm run eject`
+Add concerts is our form page where logged in users go to submit concert data to our Mongo database. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* concerts-list.js
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Concerts list is our hompage. This is the view users would go to view concerts.
+Each concert is a card containing relevant information to the given concert, a flyer image (if submitted), a button that takes them to the venues ticket/ details page, and a view map button that opens up a Google Maps page with the location of the concert.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For search functionality you are able to find conerts via 5 different search methods.
+In a traditonal search bar you are able to search by the name of the band, venue name, or city of the venue. 
+Dropdown search functionality exists for venue type and the band's genre.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* login.js
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The last file is our login page which handles the login function.
+In our project it is not a fully built login system as you'd see in a production level site.
+For the use case in our project it is used to gatekeep the add concert function.
